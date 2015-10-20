@@ -1,0 +1,34 @@
+timestretch Installation Instructions
+*************************************
+
+
+Prerequisites
+=============
+
+This software contains a Linux kernel module and a shared library.
+Therefore this should be a reasonable list of prerequisites:
+
+- Linux Kernel, version >= 2.6.26
+- Linux Kernel headers
+- gcc C compiler
+- System map and configuration for the current kernel version installed
+  in /boot/
+- udev to set correct permissions on the created device file, looking
+  for new rules in /etc/udev/rules.d/
+
+  
+Basic Installation
+==================
+
+   To install the schedul-hook kernel module the
+shell commands `./configure; make; make install' should do all the jobs.
+When running make install, this should be done with administrator privileges
+to install the kernel module in the extra/ modules' tree.
+`modprobe -a` is run as well at the end of make install, so the module
+is made visible to the system.
+
+Please note that during the execution of ./configure, the kernel map is
+inspected looking for symbols. Therefore, if the kernel is changed, ./configure
+should be run again. Running only `make` could generate a module which is
+incorrect.
+   
