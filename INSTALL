@@ -1,5 +1,5 @@
-timestretch Installation Instructions
-*************************************
+schedule-hook Installation Instructions
+***************************************
 
 
 Prerequisites
@@ -20,7 +20,8 @@ Therefore this should be a reasonable list of prerequisites:
 Basic Installation
 ==================
 
-   To install the schedul-hook kernel module the
+   To generate configuration and installation scripts, run `./autogen.sh'
+   To install the schedule-hook kernel module the
 shell commands `./configure; make; make install' should do all the jobs.
 When running make install, this should be done with administrator privileges
 to install the kernel module in the extra/ modules' tree.
