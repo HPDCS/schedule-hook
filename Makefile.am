@@ -13,22 +13,22 @@ initdir = @sysconfdir@/init.d
 
 #include_HEADERS = lib/overtick.h
 
-module/schedule-hook.ko: module/schedule-hook.c
+module/schedule.ko: module/schedule-hook.c module/hook.S
 	test -f $(builddir)/module/Makefile || $(LN_S) $(abs_top_srcdir)/module/Makefile $(builddir)/module/
 	test -f $(builddir)/module/schedule-hook.c || $(LN_S) $(abs_top_srcdir)/module/schedule-hook.c $(builddir)/module/
 	test -f $(builddir)/module/schedule-hook.h || $(LN_S) $(abs_top_srcdir)/module/schedule-hook.h $(builddir)/module/
 	$(MAKE) -C $(KERNEL_SRC) M=$(abs_top_builddir)/module EXTRA_CFLAGS="-Wall \
 									    -DFTS_ADDR=$(FTS_ADDR) -DFTS_ADDR_NEXT=$(FTS_ADDR_NEXT)"
 
-all-local: module/schedule-hook.ko
+all-local: module/schedule.ko
 
-install-exec-hook: module/schedule-hook.ko
+install-exec-hook: module/schedule.ko
 	test -z "$(DESTDIR)$(KERNEL_MOD)" || $(MKDIR_P) "$(DESTDIR)$(KERNEL_MOD)"
-	$(INSTALL) $(builddir)/module/schedule-hook.ko $(DESTDIR)$(KERNEL_MOD)/schedule-hook.ko
+	$(INSTALL) $(builddir)/module/schedule.ko $(DESTDIR)$(KERNEL_MOD)/schedule.ko
 	depmod -a
 
 uninstall-hook:
-	$(RM) $(DESTDIR)$(KERNEL_MOD)/schedule-hook.ko
+	$(RM) $(DESTDIR)$(KERNEL_MOD)/schedule.ko
 	depmod -a
 
 clean-local:

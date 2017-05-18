@@ -1,1 +1,3 @@
-obj-m := schedule-hook.o
+obj-m := schedule.o
+schedule-objs := hook.o schedule-hook.o ld.o
+
