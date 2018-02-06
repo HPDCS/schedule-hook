@@ -8,11 +8,9 @@ Prerequisites
 This software contains a Linux kernel module and a shared library.
 Therefore this should be a reasonable list of prerequisites:
 
-- Linux Kernel, version >= 2.6.26
+- Linux Kernel, version >= 2.6.13
 - Linux Kernel headers
 - gcc C compiler
-- System map and configuration for the current kernel version installed
-  in /boot/
 - udev to set correct permissions on the created device file, looking
   for new rules in /etc/udev/rules.d/
 
